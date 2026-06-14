@@ -24,8 +24,8 @@
       this.ang = Math.random() * Math.PI * 2;
       this.width = 0.18 + Math.random() * 0.35;
       this.alpha = 0.1 + Math.random() * 0.45;
-      this.turn = (Math.random() - 0.5) * 0.00035;
-      this.speed = 0.007 + Math.random() * 0.03;
+      this.turn = (Math.random() - 0.5) * 0.00015;
+      this.speed = 0.0025 + Math.random() * 0.015;
       this.age = 0;
       this.x = Math.random() * w;
       this.y = Math.random() * h;
@@ -36,7 +36,6 @@
         else if (edge === 1) { this.x = w + margin; this.y = Math.random() * h; }
         else if (edge === 2) { this.x = Math.random() * w; this.y = h + margin; }
         else { this.x = -margin; this.y = Math.random() * h; }
-        // pick an angle so it crosses the screen instead of straight inward
         this.ang = Math.random() * Math.PI * 2;
       }
     }
@@ -107,8 +106,8 @@
     }
   }
 
-  const MAX_SEGS = 8; // limited to avoid clutter
-  const MAX_DOTS = 10;
+  const MAX_SEGS = 6; // limited to avoid clutter
+  const MAX_DOTS = 8;
   const segs = Array.from({ length: MAX_SEGS }, () => new Seg());
   const dots = Array.from({ length: MAX_DOTS }, () => new Dot());
 
@@ -117,11 +116,13 @@
     const dt = t - last; last = t;
     ctx.clearRect(0, 0, w, h);
 
-    // subtle background vignette
-    // draw segments
     for (let s of segs) {
       s.update(dt);
       s.draw(ctx);
+    }
+    for (let d of dots) {
+      d.update(dt);
+      d.draw(ctx);
     }
 
     requestAnimationFrame(loop);
