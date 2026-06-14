@@ -5,14 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(data => { viewsEl.textContent = data.views.toLocaleString(); })
     .catch(() => { viewsEl.textContent = 'N/A'; });
 
-  // simple link click copies the username
-  document.querySelectorAll('.link').forEach(btn => {
+  document.querySelectorAll('.copy-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      const txt = btn.textContent.replace('Discord:', '').trim();
-      navigator.clipboard?.writeText(txt).then(() => {
+      const text = btn.getAttribute('data-copy');
+      navigator.clipboard?.writeText(text).then(() => {
         btn.textContent = 'Copied ✓';
-        setTimeout(() => location.reload(), 700);
-      }).catch(() => alert('Copy: ' + txt));
+        setTimeout(() => btn.textContent = `Discord — ${text}`, 900);
+      }).catch(() => alert('Copy: ' + text));
     });
   });
 });

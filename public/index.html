@@ -7,22 +7,31 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <main class="slat">
-      <div class="slat-inner">
-        <div class="slat-top">
-          <h1 class="slat-name">lovecrxxr</h1>
-          <p class="slat-sub">alt: crxxralt</p>
+    <main class="profile-card">
+      <header class="hero" style="background-image:url('https://media.discordapp.net/attachments/1515232806924451942/1515241432850497636/IMG_3286.png?width=696&height=1503')">
+        <div class="overlay"></div>
+        <div class="avatar-wrap">
+          <img class="avatar" src="https://media.discordapp.net/attachments/1515232806924451942/1515241432850497636/IMG_3286.png?width=696&height=1503" alt="avatar">
         </div>
+      </header>
 
-        <div class="slat-links">
-          <button class="link">Discord: <span class="muted">lovecrxxr</span></button>
-          <button class="link">Discord: <span class="muted">crxxralt</span></button>
-        </div>
+      <section class="info">
+        <h1 class="display-name">lovecrxxr</h1>
+        <p class="tag">main • alt: crxxralt</p>
+        <p class="bio">oneeyes bro — this is my site</p>
+      </section>
 
-        <div class="slat-meta">
-          <div class="views">Views: <span id="views-count">—</span></div>
-        </div>
-      </div>
+      <section class="actions">
+        <button class="big-btn copy-btn" data-copy="lovecrxxr">Discord — lovecrxxr</button>
+        <button class="big-btn copy-btn" data-copy="crxxralt">Discord — crxxralt</button>
+      </section>
+
+      <section class="stats">
+        <div>Page views</div>
+        <div id="views-count" class="count">—</div>
+      </section>
+
+      <footer class="small">Only Discord shown • Built for you</footer>
     </main>
 
     <script src="script.js"></script>
