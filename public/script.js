@@ -129,10 +129,33 @@
   }
   requestAnimationFrame(loop);
 
-  // conserve CPU if tab hidden
+  const volumeBtn = document.getElementById('volumeToggle');
+  const audio = document.getElementById('bg-audio');
+  function updateVolumeButton() {
+    if (audio.muted) {
+      volumeBtn.classList.add('muted');
+      volumeBtn.classList.remove('unmuted');
+      volumeBtn.querySelector('.icon').textContent = '🔇';
+      volumeBtn.querySelector('.label').textContent = 'Muted';
+    } else {
+      volumeBtn.classList.remove('muted');
+      volumeBtn.classList.add('unmuted');
+      volumeBtn.querySelector('.icon').textContent = '🔊';
+      volumeBtn.querySelector('.label').textContent = 'Unmuted';
+    }
+  }
+  volumeBtn.addEventListener('click', () => {
+    audio.muted = !audio.muted;
+    if (!audio.paused) {
+      audio.play().catch(() => {});
+    }
+    updateVolumeButton();
+  });
+  updateVolumeButton();
+
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      // stop drawing by slowing down updates
+    if (!document.hidden && !audio.paused && !audio.muted) {
+      audio.play().catch(() => {});
     }
   });
 })();

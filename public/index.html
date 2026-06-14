@@ -10,7 +10,14 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <button class="volume-button muted" aria-label="Toggle audio">
+      <span class="icon">🔇</span>
+      <span class="label">Muted</span>
+    </button>
     <canvas id="bg"></canvas>
+    <audio id="bg-audio" preload="auto" autoplay muted loop>
+      <source src="bygones.mp3" type="audio/mpeg">
+    </audio>
     <div class="profile-overlay">
       <div class="profile-card">
         <div class="pfp-ring">
