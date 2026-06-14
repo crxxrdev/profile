@@ -1,0 +1,16 @@
+{
+  "project": {
+    "name": "profile-site"
+  },
+  "services": [
+    {
+      "name": "web",
+      "type": "dockerfile",
+      "dockerfilePath": "Dockerfile",
+      "startCommand": "npm start",
+      "build": {
+        "dockerfilePath": "Dockerfile"
+      }
+    }
+  ]
+}
